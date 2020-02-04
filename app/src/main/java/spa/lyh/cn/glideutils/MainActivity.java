@@ -28,7 +28,7 @@ import spa.lyh.cn.lib_image.app.ProgressInterceptor;
 import spa.lyh.cn.lib_image.interceptor.listener.ProgressListener;
 
 public class MainActivity extends AppCompatActivity {
-    String url = "http://clubimg.club.vmall.com/data/attachment/forum/201904/16/195645grrrm2slvpnftdrv.jpg";
+    String url = "http://ams.sinoing.net/qb/advImgs/2020-01-12/d1c78fac.73b8.407d.903b.4e79f3b2147a564.jpeg";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 .transform(new RoundedCorners(150));*/
         RequestOptions options = new RequestOptions()
                 .transform(new CenterCrop());
-        ImageLoadUtil.displayImage(this,R.drawable.news,(ImageView) findViewById(R.id.img),options);
+        ImageLoadUtil.displayImage(this,url,(ImageView) findViewById(R.id.img),options);
         /*ImageLoadUtil.getImageBitmap(this, url, new CustomTarget<Bitmap>() {
             @Override
             public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
