@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
 
 android {
     compileSdkVersion 29
@@ -31,3 +33,101 @@ dependencies {
     // Glide图形转换工具
     api 'jp.wasabeef:glide-transformations:4.1.0'
 }
+
+def siteUrl = 'https://github.com/liyuhaolol/glideutils'
+
+def gitUrl = 'https://github.com/liyuhaolol/glideutils.git'
+
+def libName = 'lib_image'
+
+group = "spa.lyh.cn"
+
+version = "1.0.0"
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+artifacts {
+    //archives javadocJar
+    archives sourcesJar
+}
+
+install{
+    repositories.mavenInstaller{
+// This generates POM.xml with proper parameters
+        pom{
+            project{
+                packaging 'aar'
+                name 'Nice'
+                url siteUrl
+                licenses{
+                    license{
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                dependencies{
+                    dependency{
+                        groupId 'com.github.bumptech.glide'
+                        artifactId 'glide'
+                        version '4.10.0'
+                        scope 'api'
+                    }
+                    dependency{
+                        groupId 'jp.wasabeef'
+                        artifactId 'glide-transformations'
+                        version '4.1.0'
+                        scope 'api'
+                    }
+                    dependency{
+                        groupId 'com.squareup.okhttp3'
+                        artifactId 'okhttp'
+                        version '4.2.2'
+                        scope 'implementation'
+                    }
+                    dependency{
+                        groupId 'com.github.bumptech.glide'
+                        artifactId 'compiler'
+                        version '4.10.0'
+                        scope 'annotationProcessor'
+                    }
+                }
+                developers{
+                    developer{
+                        id 'liyuhao'
+                        name 'liyuhao'
+                        email 'liyuhaoid@sina.com'
+                    }
+                }
+                scm{
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+
+bintray{
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    configurations = ['archives']
+    pkg {
+        repo = 'maven'
+        //userOrg = 'lehaha'
+        name = libName
+        desc = 'Nice'
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        publish = true
+    }
+}
+
