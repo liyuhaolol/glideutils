@@ -5,7 +5,10 @@ import android.app.Notification;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Environment;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.RemoteViews;
 
@@ -17,12 +20,17 @@ import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.target.NotificationTarget;
 import com.bumptech.glide.signature.ObjectKey;
 
+import java.io.File;
+
+import spa.lyh.cn.utils_io.IOUtils;
+
 /**
  * Created by liyuhao on 2017/6/7.
  * 图片加载工具
  */
 
 public class ImageLoadUtil {
+    private static String android = "/Android";
 
 
     public static void displayImage(Context context, Object res, ImageView target) {
@@ -49,7 +57,7 @@ public class ImageLoadUtil {
                 RequestOptions signatureOption = new RequestOptions().signature(new ObjectKey(signature));
                 builder = builder.apply(signatureOption);
             }
-            builder.load(res)
+            builder.load(syncRes(context,res))
                     .into(target);
         }
     }
@@ -66,7 +74,7 @@ public class ImageLoadUtil {
                     .transform(corners);
             Glide.with(context)
                     .asBitmap()
-                    .load(url)
+                    .load(syncRes(context,url))
                     .apply(option)
                     .into(new NotificationTarget(context, id, rv, notification, NOTIFICATION_ID));
         }
@@ -79,7 +87,7 @@ public class ImageLoadUtil {
             RequestBuilder<Bitmap> builder;
             builder = Glide.with(context)
                     .asBitmap();
-            builder.load(res)
+            builder.load(syncRes(context,res))
                     .into(target);
         }
     }
@@ -88,5 +96,20 @@ public class ImageLoadUtil {
     private static int dip2px(Context context, float dpValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale);
+    }
+
+    private static Object syncRes(Context context,Object res){
+        if (res instanceof String){
+            String path = (String) res;
+            if (path.startsWith("/sdcard")){
+                String storagePath = Environment.getExternalStorageDirectory().getPath();
+                path = storagePath + path.substring(7);
+                if (!path.startsWith(storagePath + android)){
+                    //外部存储
+                    res = IOUtils.getFileUri(context,path);
+                }
+            }
+        }
+        return res;
     }
 }

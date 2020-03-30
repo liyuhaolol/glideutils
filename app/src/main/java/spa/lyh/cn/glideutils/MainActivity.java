@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -23,11 +24,13 @@ import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 
+import java.io.File;
+
 import spa.lyh.cn.lib_image.app.ImageLoadUtil;
 import spa.lyh.cn.lib_image.app.ProgressInterceptor;
 import spa.lyh.cn.lib_image.interceptor.listener.ProgressListener;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends PermissionActivity {
     String url = "http://ams.sinoing.net/qb/advImgs/2020-01-12/d1c78fac.73b8.407d.903b.4e79f3b2147a564.jpeg";
 
     @Override
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTranslucent();
+        hasPermission(NOT_REQUIRED_ONLY_REQUEST, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         //隐藏掉导航栏
         setSystemUiVisibility(getWindow().getDecorView(),View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
@@ -54,6 +58,12 @@ public class MainActivity extends AppCompatActivity {
                 .transform(new RoundedCorners(150));*/
         RequestOptions options = new RequestOptions()
                 .transform(new CenterCrop());
+        String publicPath = "/sdcard/Documents/Q/5-140FGZ248-53.gif";
+        String privitePath = getExternalCacheDir()+"/5-140FGZ248-53.gif";
+        File file = new File(privitePath);
+        if (file.exists()){
+            Log.e("liyuhao","存在");
+        }
         ImageLoadUtil.displayImage(this,url,(ImageView) findViewById(R.id.img),options);
         /*ImageLoadUtil.getImageBitmap(this, url, new CustomTarget<Bitmap>() {
             @Override
