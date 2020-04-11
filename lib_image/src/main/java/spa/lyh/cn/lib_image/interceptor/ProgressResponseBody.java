@@ -3,6 +3,8 @@ package spa.lyh.cn.lib_image.interceptor;
 import androidx.annotation.Nullable;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 
 import okhttp3.MediaType;
 import okhttp3.ResponseBody;
@@ -32,7 +34,11 @@ public class ProgressResponseBody extends ResponseBody {
 
     public ProgressResponseBody(String url, ResponseBody responseBody) {
         this.responseBody = responseBody;
-        listener = OkInterceptor.LISTENER_MAP.get(url);
+        try{
+            listener = OkInterceptor.LISTENER_MAP.get(URLDecoder.decode(url, "UTF-8"));
+        }catch (UnsupportedEncodingException e){
+            e.printStackTrace();
+        }
     }
 
 
