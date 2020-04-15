@@ -10,8 +10,8 @@ android {
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 4
-        versionName "1.0.3"
+        versionCode 5
+        versionName "1.0.4"
 
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -43,7 +43,7 @@ def libName = 'lib_image'
 
 group = "spa.lyh.cn"
 
-version = "1.0.3"
+version = "1.0.4"
 
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs

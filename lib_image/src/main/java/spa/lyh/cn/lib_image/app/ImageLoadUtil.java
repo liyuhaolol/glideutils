@@ -92,6 +92,19 @@ public class ImageLoadUtil {
         }
     }
 
+    public static void getImageBitmap(Context context, Object res, RequestOptions option,CustomTarget<Bitmap> target) {
+        if (context != null){
+            RequestBuilder<Bitmap> builder;
+            builder = Glide.with(context)
+                    .asBitmap();
+            if (option != null) {
+                builder = builder.apply(option);
+            }
+            builder.load(syncRes(context,res))
+                    .into(target);
+        }
+    }
+
 
     private static int dip2px(Context context, float dpValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
