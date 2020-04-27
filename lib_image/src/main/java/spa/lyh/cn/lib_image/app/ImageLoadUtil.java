@@ -37,7 +37,7 @@ public class ImageLoadUtil {
         displayImage(context,res,target,"");
     }
 
-    public static void displayImage(Context context, Object res, ImageView target,String signature) {
+    public static void displayImage(Context context, Object res, ImageView target, String signature) {
         displayImage(context,res,target,null,signature);
     }
 
@@ -45,7 +45,7 @@ public class ImageLoadUtil {
         displayImage(context,res,target,option,"");
     }
 
-    public static void displayImage(Context context, Object res, ImageView target, RequestOptions option,String signature) {
+    public static void displayImage(Context context, Object res, ImageView target, RequestOptions option, String signature) {
         if (context != null){
             RequestBuilder<Drawable> builder;
             builder = Glide.with(context)
@@ -63,7 +63,7 @@ public class ImageLoadUtil {
     }
 
 
-    public static void displayImageForNotification(Context context, RemoteViews rv, int id,
+    public static void displayImageForNotification(Context context, RemoteViews rv, int resId,
                                                    Notification notification, int NOTIFICATION_ID, String url) {
 
         if (context != null){
@@ -76,7 +76,7 @@ public class ImageLoadUtil {
                     .asBitmap()
                     .load(syncRes(context,url))
                     .apply(option)
-                    .into(new NotificationTarget(context, id, rv, notification, NOTIFICATION_ID));
+                    .into(new NotificationTarget(context, resId, rv, notification, NOTIFICATION_ID));
         }
     }
 
@@ -92,7 +92,7 @@ public class ImageLoadUtil {
         }
     }
 
-    public static void getImageBitmap(Context context, Object res, RequestOptions option,CustomTarget<Bitmap> target) {
+    public static void getImageBitmap(Context context, Object res, RequestOptions option, CustomTarget<Bitmap> target) {
         if (context != null){
             RequestBuilder<Bitmap> builder;
             builder = Glide.with(context)
@@ -111,7 +111,7 @@ public class ImageLoadUtil {
         return (int) (dpValue * scale);
     }
 
-    private static Object syncRes(Context context,Object res){
+    private static Object syncRes(Context context, Object res){
         if (res instanceof String){
             String path = (String) res;
             if (path.startsWith("/sdcard")){

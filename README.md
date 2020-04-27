@@ -4,7 +4,7 @@
 
 - Github: https://github.com/bumptech/glide
 
-## 1.0.4更新
+## 1.0.5更新
 
 - 兼容Android10公共目录文件加载显示
 
@@ -34,8 +34,9 @@
 
 ## ImageLoadUtil
 
+#### 加载一般图片的方法
+
 - displayImage();
-加载一般图片的方法
 
 ```java
 /**
@@ -59,23 +60,25 @@ displayImage(Context context, Object res, ImageView target, String signature)
 displayImage(Context context, Object res, ImageView target, RequestOptions option, String signature)
 ```
 
+#### 加载状态栏通知的图片
+
 - displayImageForNotification();
-加载状态栏通知的图片
 
 ```java
 /**
 *  @param context 上下文
 *  @param rv 通知栏的view
-*  @param id ImageView的resId
+*  @param resId ImageView的resId
 *  @param notification Notification这个通知栏的对象
 *  @param NOTIFICATION_ID 状态栏id
 *  @param url 显示图片路径，不宜尺寸太大
 */
-displayImageForNotification(Context context, RemoteViews rv, int id,Notification notification, int NOTIFICATION_ID, String url)
+displayImageForNotification(Context context, RemoteViews rv, int resId,Notification notification, int NOTIFICATION_ID, String url)
 ```
 
+#### 获得图片对应的bitmap的方法
+
 - getImageBitmap();
-获得图片对应的bitmap的方法
 
 ```java
 /**
@@ -90,3 +93,9 @@ getImageBitmap(Context context, Object res, CustomTarget<Bitmap> target)
 */
 getImageBitmap(Context context, Object res, RequestOptions option, CustomTarget<Bitmap> target)
 ```
+
+## 注意事项
+
+- API引用的依赖库不需要重复依赖，可以直接使用
+
+- Android10公共目录请严格遵守使用规范
