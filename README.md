@@ -11,7 +11,7 @@
 ## 框架引用方法
 
 - 在gradle中:
-```
+```gradle
     //封装的主要框架
     implementation 'spa.lyh.cn:lib_image:1.0.4'
     //不引用此框架，会造成加载进度监控失效，缓存无法自动指向app的外置cache目录
