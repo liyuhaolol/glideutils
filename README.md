@@ -40,19 +40,19 @@
 
 ```java
 /**
-*  @param context 上下文
-*  @param res 资源源路径，无论是String，drawable，bitmap，视频等基本都可以直接传
-*  @param target ImageView对象
+* @param context 上下文
+* @param res 资源源路径，无论是String，drawable，bitmap，视频等基本都可以直接传
+* @param target ImageView对象
 */
 displayImage(Context context, Object res, ImageView target)
 
 /**
-*  @param option Glide使用的额外选项，用户可以自定义如滤镜，裁剪，占位图等
+* @param option Glide使用的额外选项，用户可以自定义如滤镜，裁剪，占位图等
 */
 displayImage(Context context, Object res, ImageView target, RequestOptions option)
 
 /**
-*  @param signature 图片唯一签名，用来针对后台图片地址不变，但是图片本身会改变的情况，唯一标识符最好是由后台
+* @param signature 图片唯一签名，用来针对后台图片地址不变，但是图片本身会改变的情况，唯一标识符最好是由后台
 *                   传过来，使用时间戳就行，或其他唯一标识。
 */
 displayImage(Context context, Object res, ImageView target, String signature)
@@ -66,12 +66,12 @@ displayImage(Context context, Object res, ImageView target, RequestOptions optio
 
 ```java
 /**
-*  @param context 上下文
-*  @param rv 通知栏的view
-*  @param resId ImageView的resId
-*  @param notification Notification这个通知栏的对象
-*  @param NOTIFICATION_ID 状态栏id
-*  @param url 显示图片路径，不宜尺寸太大
+* @param context 上下文
+* @param rv 通知栏的view
+* @param resId ImageView的resId
+* @param notification Notification这个通知栏的对象
+* @param NOTIFICATION_ID 状态栏id
+* @param url 显示图片路径，不宜尺寸太大
 */
 displayImageForNotification(Context context, RemoteViews rv, int resId,Notification notification, int NOTIFICATION_ID, String url)
 ```
@@ -82,14 +82,14 @@ displayImageForNotification(Context context, RemoteViews rv, int resId,Notificat
 
 ```java
 /**
-*  @param context 上下文
-*  @param res 资源源路径，无论是String，drawable，bitmap，视频等基本都可以直接传
-*  @param target CustomTarget对象，获得对应的bitmap，包含了图片的信息
+* @param context 上下文
+* @param res 资源源路径，无论是String，drawable，bitmap，视频等基本都可以直接传
+* @param target CustomTarget对象，获得对应的bitmap，包含了图片的信息
 */
 getImageBitmap(Context context, Object res, CustomTarget<Bitmap> target)
 
 /**
-*  @param option Glide使用的额外选项，用户可以自定义如滤镜，裁剪，占位图等
+* @param option Glide使用的额外选项，用户可以自定义如滤镜，裁剪，占位图等
 */
 getImageBitmap(Context context, Object res, RequestOptions option, CustomTarget<Bitmap> target)
 ```
