@@ -1,0 +1,14 @@
+ext {
+    versions = [
+            versionCode : 6,
+            versionName : '1.0.5',
+
+            okhttp : '4.2.2',
+            glide : '4.11.0',
+            compiler : '4.11.0',
+            lib_io : '1.0.4',
+            transformations : '4.1.0'
+
+
+    ]
+}
