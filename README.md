@@ -4,6 +4,10 @@
 
 - Github: https://github.com/bumptech/glide
 
+## 1.0.6更新
+
+- 修正公共路径下，本地图片无法显示的问题。
+
 ## 1.0.5更新
 
 - 兼容Android10公共目录文件加载显示
@@ -13,7 +17,7 @@
 - 在gradle中:
 ```gradle
     //封装的主要框架
-    implementation 'spa.lyh.cn:lib_image:1.0.4'
+    implementation 'spa.lyh.cn:lib_image:1.0.6'
     //不引用此框架，会造成加载进度监控失效，缓存无法自动指向app的外置cache目录
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 ```

@@ -114,9 +114,11 @@ public class ImageLoadUtil {
     private static Object syncRes(Context context, Object res){
         if (res instanceof String){
             String path = (String) res;
+            String storagePath = Environment.getExternalStorageDirectory().getPath();
             if (path.startsWith("/sdcard")){
-                String storagePath = Environment.getExternalStorageDirectory().getPath();
                 path = storagePath + path.substring(7);
+            }
+            if (path.startsWith(storagePath)){
                 if (!path.startsWith(storagePath + android)){
                     //外部存储
                     res = IOUtils.getFileUri(context,path);
