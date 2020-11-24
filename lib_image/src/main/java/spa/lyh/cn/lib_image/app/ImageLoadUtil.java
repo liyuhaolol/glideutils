@@ -22,8 +22,6 @@ import com.bumptech.glide.signature.ObjectKey;
 
 import java.io.File;
 
-import spa.lyh.cn.utils_io.IOUtils;
-
 /**
  * Created by liyuhao on 2017/6/7.
  * 图片加载工具
@@ -57,7 +55,7 @@ public class ImageLoadUtil {
                 RequestOptions signatureOption = new RequestOptions().signature(new ObjectKey(signature));
                 builder = builder.apply(signatureOption);
             }
-            builder.load(syncRes(context,res))
+            builder.load(syncRes(res))
                     .into(target);
         }
     }
@@ -74,7 +72,7 @@ public class ImageLoadUtil {
                     .transform(corners);
             Glide.with(context)
                     .asBitmap()
-                    .load(syncRes(context,url))
+                    .load(syncRes(url))
                     .apply(option)
                     .into(new NotificationTarget(context, resId, rv, notification, NOTIFICATION_ID));
         }
@@ -87,7 +85,7 @@ public class ImageLoadUtil {
             RequestBuilder<Bitmap> builder;
             builder = Glide.with(context)
                     .asBitmap();
-            builder.load(syncRes(context,res))
+            builder.load(syncRes(res))
                     .into(target);
         }
     }
@@ -100,7 +98,7 @@ public class ImageLoadUtil {
             if (option != null) {
                 builder = builder.apply(option);
             }
-            builder.load(syncRes(context,res))
+            builder.load(syncRes(res))
                     .into(target);
         }
     }
@@ -111,7 +109,7 @@ public class ImageLoadUtil {
         return (int) (dpValue * scale);
     }
 
-    private static Object syncRes(Context context, Object res){
+    private static Object syncRes(Object res){
         if (res instanceof String){
             String path = (String) res;
             String storagePath = Environment.getExternalStorageDirectory().getPath();
@@ -121,7 +119,7 @@ public class ImageLoadUtil {
             if (path.startsWith(storagePath)){
                 if (!path.startsWith(storagePath + android)){
                     //外部存储
-                    res = IOUtils.getFileUri(context,path);
+                    res = new File(path);
                 }
             }
         }

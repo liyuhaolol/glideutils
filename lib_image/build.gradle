@@ -30,7 +30,6 @@ dependencies {
     api 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     implementation 'com.squareup.okhttp3:okhttp:4.2.2'
-    implementation 'spa.lyh.cn:lib_io:1.0.4'
     // Glide图形转换工具
     api 'jp.wasabeef:glide-transformations:4.1.0'
 }
@@ -86,12 +85,6 @@ install{
                         groupId 'com.squareup.okhttp3'
                         artifactId 'okhttp'
                         version '4.2.2'
-                        scope 'implementation'
-                    }
-                    dependency{
-                        groupId 'spa.lyh.cn'
-                        artifactId 'lib_io'
-                        version '1.0.4'
                         scope 'implementation'
                     }
                     dependency{
