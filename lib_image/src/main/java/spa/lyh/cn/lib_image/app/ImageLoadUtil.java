@@ -22,12 +22,15 @@ import com.bumptech.glide.signature.ObjectKey;
 
 import java.io.File;
 
+import spa.lyh.cn.utils_io.IOUtils;
+
 /**
  * Created by liyuhao on 2017/6/7.
  * 图片加载工具
  */
 
 public class ImageLoadUtil {
+    private static String storage = "/storage";
     private static String android = "/Android";
 
 
@@ -55,7 +58,7 @@ public class ImageLoadUtil {
                 RequestOptions signatureOption = new RequestOptions().signature(new ObjectKey(signature));
                 builder = builder.apply(signatureOption);
             }
-            builder.load(syncRes(res))
+            builder.load(syncRes(context,res))
                     .into(target);
         }
     }
@@ -72,7 +75,7 @@ public class ImageLoadUtil {
                     .transform(corners);
             Glide.with(context)
                     .asBitmap()
-                    .load(syncRes(url))
+                    .load(syncRes(context,url))
                     .apply(option)
                     .into(new NotificationTarget(context, resId, rv, notification, NOTIFICATION_ID));
         }
@@ -85,7 +88,7 @@ public class ImageLoadUtil {
             RequestBuilder<Bitmap> builder;
             builder = Glide.with(context)
                     .asBitmap();
-            builder.load(syncRes(res))
+            builder.load(syncRes(context,res))
                     .into(target);
         }
     }
@@ -98,7 +101,7 @@ public class ImageLoadUtil {
             if (option != null) {
                 builder = builder.apply(option);
             }
-            builder.load(syncRes(res))
+            builder.load(syncRes(context,res))
                     .into(target);
         }
     }
@@ -109,17 +112,15 @@ public class ImageLoadUtil {
         return (int) (dpValue * scale);
     }
 
-    private static Object syncRes(Object res){
+    private static Object syncRes(Context context,Object res){
         if (res instanceof String){
             String path = (String) res;
             String storagePath = Environment.getExternalStorageDirectory().getPath();
-            if (path.startsWith("/sdcard")){
-                path = storagePath + path.substring(7);
-            }
-            if (path.startsWith(storagePath)){
+            if (path.startsWith(storage)){
+                //为存储路径图片
                 if (!path.startsWith(storagePath + android)){
-                    //外部存储
-                    res = new File(path);
+                    //不是私有路径
+                    res = IOUtils.getFileUri(context,path);
                 }
             }
         }

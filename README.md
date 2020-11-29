@@ -4,6 +4,10 @@
 
 - Github: https://github.com/bumptech/glide
 
+## 1.0.9更新
+
+- 修正上个版本产生的严重BUG。
+
 ## 1.0.8更新
 
 - 去除掉IO包，之前是我想多了。
