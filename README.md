@@ -4,6 +4,10 @@
 
 - Github: https://github.com/bumptech/glide
 
+## 1.1.0更新
+
+- 更新IO工具到1.0.6版本。
+
 ## 1.0.9更新
 
 - 修正上个版本产生的严重BUG。
