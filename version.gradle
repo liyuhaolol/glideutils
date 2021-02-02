@@ -1,12 +1,12 @@
 ext {
     versions = [
-            versionCode : 12,
-            versionName : '1.1.1',
+            versionCode : 13,
+            versionName : '1.1.2',
 
             okhttp : '4.9.0',
             glide : '4.11.0',
             compiler : '4.11.0',
-            lib_io : '1.0.7',
+            lib_io : '1.0.8',
             transformations : '4.1.0'
 
 
