@@ -4,6 +4,10 @@
 
 - Github: https://github.com/bumptech/glide
 
+## 1.1.1更新
+
+- 更新IO工具到1.0.7版本。
+
 ## 1.1.0更新
 
 - 更新IO工具到1.0.6版本。
@@ -33,7 +37,7 @@
 - 在gradle中:
 ```gradle
     //封装的主要框架
-    implementation 'spa.lyh.cn:lib_image:1.0.9'
+    implementation 'spa.lyh.cn:lib_image:1.1.1'
     //不引用此框架，会造成加载进度监控失效，缓存无法自动指向app的外置cache目录
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 ```
