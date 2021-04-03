@@ -16,7 +16,12 @@ import com.bumptech.glide.module.AppGlideModule;
 import java.io.File;
 import java.io.InputStream;
 
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLSession;
+
 import okhttp3.OkHttpClient;
+import spa.lyh.cn.lib_https.HttpClient;
+import spa.lyh.cn.lib_https.https.HttpsUtils;
 import spa.lyh.cn.lib_image.interceptor.OkInterceptor;
 import spa.lyh.cn.lib_image.interceptor.OkHttpUrlLoader;
 
@@ -44,6 +49,13 @@ public class CustomCachingGlideModule extends AppGlideModule {
         //添加拦截器到Glide
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.addInterceptor(new OkInterceptor());
+        builder.hostnameVerifier(new HostnameVerifier() {
+            @Override
+            public boolean verify(String hostname, SSLSession session) {
+                return true;
+            }
+        });
+        builder.sslSocketFactory(HttpsUtils.initSSLSocketFactory(),HttpsUtils.initTrustManager());
         OkHttpClient okHttpClient = builder.build();
         registry.replace(GlideUrl.class, InputStream.class,new OkHttpUrlLoader.Factory(okHttpClient));
     }

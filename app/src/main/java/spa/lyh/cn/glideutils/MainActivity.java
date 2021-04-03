@@ -31,7 +31,8 @@ import spa.lyh.cn.lib_image.app.ProgressInterceptor;
 import spa.lyh.cn.lib_image.interceptor.listener.ProgressListener;
 
 public class MainActivity extends PermissionActivity {
-    String url = "http://ams.sinoing.net/qb/advImgs/2020-01-12/d1c78fac.73b8.407d.903b.4e79f3b2147a564.jpeg";
+    //String url = "http://ams.sinoing.net/qb/advImgs/2020-01-12/d1c78fac.73b8.407d.903b.4e79f3b2147a564.jpeg";
+    String url = "https://www.au123.com/image/2021-04-02/827575547067637760.png";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
