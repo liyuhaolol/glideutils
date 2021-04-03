@@ -23,6 +23,5 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation project(':lib_image')
-    //implementation 'spa.lyh.cn:lib_image:1.0.6'
-    //annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    //implementation 'com.github.liyuhaolol:glideutils:1.1.4'
 }
