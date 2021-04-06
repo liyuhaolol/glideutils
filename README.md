@@ -75,7 +75,7 @@
 
 - `implementation 'com.squareup.okhttp3:okhttp'` okhttp用来承载glide的网络层
 
-- `implementation 'spa.lyh.cn:lib_io'` okhttp的io库
+- `implementation 'com.github.liyuhaolol:IO'` okhttp的io库
 
 # 实体类方法说明
 
