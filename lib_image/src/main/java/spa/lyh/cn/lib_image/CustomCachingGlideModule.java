@@ -20,8 +20,7 @@ import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLSession;
 
 import okhttp3.OkHttpClient;
-import spa.lyh.cn.lib_https.HttpClient;
-import spa.lyh.cn.lib_https.https.HttpsUtils;
+import spa.lyh.cn.lib_image.https.HttpsUtils;
 import spa.lyh.cn.lib_image.interceptor.OkInterceptor;
 import spa.lyh.cn.lib_image.interceptor.OkHttpUrlLoader;
 

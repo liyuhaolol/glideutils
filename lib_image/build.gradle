@@ -31,5 +31,5 @@ dependencies {
     // Glide图形转换工具
     api "jp.wasabeef:glide-transformations:${versions.transformations}"
     implementation "com.github.liyuhaolol:IO:${versions.lib_io}"
-    implementation "com.github.liyuhaolol:HttpUtils:${versions.lib_https}"
+    implementation "com.squareup.okhttp3:okhttp:${versions.okhttp}"
 }
