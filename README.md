@@ -4,6 +4,10 @@
 
 - Github: https://github.com/bumptech/glide
 
+## 1.1.6更新
+
+- 更新IO包版本
+
 ## 1.1.5更新
 
 - 去除HttpUtils换回okhttp。
@@ -62,7 +66,7 @@
 
 ```gradle
     //封装的主要框架
-    implementation 'com.github.liyuhaolol:glideutils:1.1.5'
+    implementation 'com.github.liyuhaolol:glideutils:1.1.6'
 ```
 
 ## 引用的主要类
