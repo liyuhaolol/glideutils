@@ -106,6 +106,29 @@ public class ImageLoadUtil {
         }
     }
 
+    public static void getImageCacheFilepath(Context context, Object res, CustomTarget<File> target) {
+        if (context != null){
+            RequestBuilder<File> builder;
+            builder = Glide.with(context)
+                    .asFile();
+            builder.load(syncRes(context,res))
+                    .into(target);
+        }
+    }
+
+    public static void getImageCacheFilepath(Context context, Object res, RequestOptions option, CustomTarget<File> target) {
+        if (context != null){
+            RequestBuilder<File> builder;
+            builder = Glide.with(context)
+                    .asFile();
+            if (option != null) {
+                builder = builder.apply(option);
+            }
+            builder.load(syncRes(context,res))
+                    .into(target);
+        }
+    }
+
 
     private static int dip2px(Context context, float dpValue) {
         final float scale = context.getResources().getDisplayMetrics().density;

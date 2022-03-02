@@ -18,6 +18,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
@@ -65,11 +66,47 @@ public class MainActivity extends PermissionActivity {
         if (file.exists()){
             Log.e("liyuhao","存在");
         }
-        ImageLoadUtil.displayImage(this,url,(ImageView) findViewById(R.id.img),options);
+        //ImageLoadUtil.displayImage(this,url,(ImageView) findViewById(R.id.img),options);
         /*ImageLoadUtil.getImageBitmap(this, url, new CustomTarget<Bitmap>() {
             @Override
             public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
                 Toast.makeText(MainActivity.this,"图片宽："+resource.getWidth()+" 高："+resource.getHeight(),Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onLoadCleared(@Nullable Drawable placeholder) {
+
+            }
+        });*/
+        /*Glide.with(this)
+                .asFile()
+                .load(url)
+                .into(new CustomTarget<File>() {
+                    @Override
+                    public void onResourceReady(@NonNull File resource, @Nullable Transition<? super File> transition) {
+                        Log.e("qwer","3333:"+resource.getAbsolutePath());
+                    }
+
+                    @Override
+                    public void onLoadCleared(@Nullable Drawable placeholder) {
+
+                    }
+                });*/
+        ImageLoadUtil.getImageCacheFilepath(this, url, new CustomTarget<File>() {
+            @Override
+            public void onResourceReady(@NonNull File resource, @Nullable Transition<? super File> transition) {
+                Log.e("qwer","3333:"+resource.getAbsolutePath());
+            }
+
+            @Override
+            public void onLoadCleared(@Nullable Drawable placeholder) {
+
+            }
+        });
+/*        ImageLoadUtil.getImageBitmap(this, url, new CustomTarget<Bitmap>() {
+            @Override
+            public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                Log.e("qwer","3333");
             }
 
             @Override
