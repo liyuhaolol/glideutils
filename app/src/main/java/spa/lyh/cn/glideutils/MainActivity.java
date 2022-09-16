@@ -66,7 +66,7 @@ public class MainActivity extends PermissionActivity {
         if (file.exists()){
             Log.e("liyuhao","存在");
         }
-        //ImageLoadUtil.displayImage(this,url,(ImageView) findViewById(R.id.img),options);
+        ImageLoadUtil.displayImage(this,url,(ImageView) findViewById(R.id.img),options);
         /*ImageLoadUtil.getImageBitmap(this, url, new CustomTarget<Bitmap>() {
             @Override
             public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
@@ -92,7 +92,7 @@ public class MainActivity extends PermissionActivity {
 
                     }
                 });*/
-        ImageLoadUtil.getImageCacheFilepath(this, url, new CustomTarget<File>() {
+/*        ImageLoadUtil.getImageCacheFilepath(this, url, new CustomTarget<File>() {
             @Override
             public void onResourceReady(@NonNull File resource, @Nullable Transition<? super File> transition) {
                 Log.e("qwer","3333:"+resource.getAbsolutePath());
@@ -102,7 +102,7 @@ public class MainActivity extends PermissionActivity {
             public void onLoadCleared(@Nullable Drawable placeholder) {
 
             }
-        });
+        });*/
 /*        ImageLoadUtil.getImageBitmap(this, url, new CustomTarget<Bitmap>() {
             @Override
             public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {

@@ -4,6 +4,10 @@
 
 - Github: https://github.com/bumptech/glide
 
+## 1.1.8更新
+
+- 所有方法加入try/catch避免因为activity的生命周期问题造成页面闪退
+
 ## 1.1.7更新
 
 - 增加获取图片缓存路径功能
@@ -70,7 +74,7 @@
 
 ```gradle
     //封装的主要框架
-    implementation 'com.github.liyuhaolol:glideutils:1.1.7'
+    implementation 'com.github.liyuhaolol:glideutils:1.1.8'
 ```
 
 ## 引用的主要类

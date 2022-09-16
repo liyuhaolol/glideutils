@@ -47,85 +47,108 @@ public class ImageLoadUtil {
     }
 
     public static void displayImage(Context context, Object res, ImageView target, RequestOptions option, String signature) {
-        if (context != null){
-            RequestBuilder<Drawable> builder;
-            builder = Glide.with(context)
-                    .asDrawable();
-            if (option != null) {
-                builder = builder.apply(option);
+        try{
+            if (context != null){
+                RequestBuilder<Drawable> builder;
+                builder = Glide.with(context)
+                        .asDrawable();
+                if (option != null) {
+                    builder = builder.apply(option);
+                }
+                if (!TextUtils.isEmpty(signature)){
+                    RequestOptions signatureOption = new RequestOptions().signature(new ObjectKey(signature));
+                    builder = builder.apply(signatureOption);
+                }
+                builder.load(syncRes(context,res))
+                        .into(target);
             }
-            if (!TextUtils.isEmpty(signature)){
-                RequestOptions signatureOption = new RequestOptions().signature(new ObjectKey(signature));
-                builder = builder.apply(signatureOption);
-            }
-            builder.load(syncRes(context,res))
-                    .into(target);
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
 
     public static void displayImageForNotification(Context context, RemoteViews rv, int resId,
                                                    Notification notification, int NOTIFICATION_ID, String url) {
-
-        if (context != null){
-            RoundedCorners corners = new RoundedCorners(dip2px(context,5));
-            RequestOptions option = new RequestOptions()
-                    .override(300,300)
-                    .dontAnimate()
-                    .transform(corners);
-            Glide.with(context)
-                    .asBitmap()
-                    .load(syncRes(context,url))
-                    .apply(option)
-                    .into(new NotificationTarget(context, resId, rv, notification, NOTIFICATION_ID));
+        try{
+            if (context != null){
+                RoundedCorners corners = new RoundedCorners(dip2px(context,5));
+                RequestOptions option = new RequestOptions()
+                        .override(300,300)
+                        .dontAnimate()
+                        .transform(corners);
+                Glide.with(context)
+                        .asBitmap()
+                        .load(syncRes(context,url))
+                        .apply(option)
+                        .into(new NotificationTarget(context, resId, rv, notification, NOTIFICATION_ID));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
 
 
     public static void getImageBitmap(Context context, Object res, CustomTarget<Bitmap> target) {
-        if (context != null){
-            RequestBuilder<Bitmap> builder;
-            builder = Glide.with(context)
-                    .asBitmap();
-            builder.load(syncRes(context,res))
-                    .into(target);
+        try{
+            if (context != null){
+                RequestBuilder<Bitmap> builder;
+                builder = Glide.with(context)
+                        .asBitmap();
+                builder.load(syncRes(context,res))
+                        .into(target);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
     public static void getImageBitmap(Context context, Object res, RequestOptions option, CustomTarget<Bitmap> target) {
-        if (context != null){
-            RequestBuilder<Bitmap> builder;
-            builder = Glide.with(context)
-                    .asBitmap();
-            if (option != null) {
-                builder = builder.apply(option);
+        try{
+            if (context != null){
+                RequestBuilder<Bitmap> builder;
+                builder = Glide.with(context)
+                        .asBitmap();
+                if (option != null) {
+                    builder = builder.apply(option);
+                }
+                builder.load(syncRes(context,res))
+                        .into(target);
             }
-            builder.load(syncRes(context,res))
-                    .into(target);
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
     public static void getImageCacheFilepath(Context context, Object res, CustomTarget<File> target) {
-        if (context != null){
-            RequestBuilder<File> builder;
-            builder = Glide.with(context)
-                    .asFile();
-            builder.load(syncRes(context,res))
-                    .into(target);
+        try {
+            if (context != null){
+                RequestBuilder<File> builder;
+                builder = Glide.with(context)
+                        .asFile();
+                builder.load(syncRes(context,res))
+                        .into(target);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
     public static void getImageCacheFilepath(Context context, Object res, RequestOptions option, CustomTarget<File> target) {
-        if (context != null){
-            RequestBuilder<File> builder;
-            builder = Glide.with(context)
-                    .asFile();
-            if (option != null) {
-                builder = builder.apply(option);
+        try{
+            if (context != null){
+                RequestBuilder<File> builder;
+                builder = Glide.with(context)
+                        .asFile();
+                if (option != null) {
+                    builder = builder.apply(option);
+                }
+                builder.load(syncRes(context,res))
+                        .into(target);
             }
-            builder.load(syncRes(context,res))
-                    .into(target);
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
