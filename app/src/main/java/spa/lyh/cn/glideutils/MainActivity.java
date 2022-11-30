@@ -1,31 +1,16 @@
 package spa.lyh.cn.glideutils;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.Manifest;
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.CustomTarget;
-import com.bumptech.glide.request.transition.Transition;
-
-import java.io.File;
 
 import spa.lyh.cn.lib_image.app.ImageLoadUtil;
 import spa.lyh.cn.lib_image.app.ProgressInterceptor;
@@ -45,11 +30,11 @@ public class MainActivity extends PermissionActivity {
         setSystemUiVisibility(getWindow().getDecorView(),View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-        DisplayMetrics outMetrics = new DisplayMetrics();
+        /*DisplayMetrics outMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(outMetrics);
         int widthPixels = outMetrics.widthPixels;
         int heightPixels = outMetrics.heightPixels;
-        Toast.makeText(MainActivity.this,"屏幕宽："+widthPixels+" 高："+heightPixels,Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this,"屏幕宽："+widthPixels+" 高："+heightPixels,Toast.LENGTH_SHORT).show();*/
         ProgressInterceptor.addListener(url, new ProgressListener() {
             @Override
             public void onProgress(int progress) {
@@ -59,13 +44,13 @@ public class MainActivity extends PermissionActivity {
         /*RequestOptions options = new RequestOptions()
                 .transform(new RoundedCorners(150));*/
         RequestOptions options = new RequestOptions()
-                .transform(new CenterCrop());
-        String publicPath = "/sdcard/Documents/Q/5-140FGZ248-53.gif";
+                .transform(new CenterCrop(),new GrayPicTransform());
+/*        String publicPath = "/sdcard/Documents/Q/5-140FGZ248-53.gif";
         String privitePath = getExternalCacheDir()+"/5-140FGZ248-53.gif";
         File file = new File(privitePath);
         if (file.exists()){
             Log.e("liyuhao","存在");
-        }
+        }*/
         ImageLoadUtil.displayImage(this,url,(ImageView) findViewById(R.id.img),options);
         /*ImageLoadUtil.getImageBitmap(this, url, new CustomTarget<Bitmap>() {
             @Override
