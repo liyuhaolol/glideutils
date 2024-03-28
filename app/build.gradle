@@ -1,12 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    namespace 'spa.lyh.cn.glideutils'
+    compileSdk 34
+
     defaultConfig {
         applicationId "spa.lyh.cn.glideutils"
-        minSdkVersion 21
-        targetSdkVersion 30
+        minSdk 21
+        targetSdk 34
         versionCode 1
         versionName "1.0"
     }
@@ -16,12 +17,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation project(':lib_image')
     //implementation 'com.github.liyuhaolol:glideutils:1.1.4'
 }
