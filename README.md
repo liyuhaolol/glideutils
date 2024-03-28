@@ -4,6 +4,10 @@
 
 - Github: https://github.com/bumptech/glide
 
+## 1.1.9更新
+
+- 迁移到mavencentral
+
 ## 1.1.8更新
 
 - 所有方法加入try/catch避免因为activity的生命周期问题造成页面闪退
@@ -67,14 +71,14 @@
 ```gradle
     allprojects {
         repositories {
-            maven{url'https://jitpack.io'}
+            mavenCentral()
         }
     }
 ```
 
 ```gradle
     //封装的主要框架
-    implementation 'com.github.liyuhaolol:glideutils:1.1.8'
+    implementation 'io.github.liyuhaolol:glideutils:1.1.9'
 ```
 
 ## 引用的主要类
@@ -82,6 +86,8 @@
 - `api 'com.github.bumptech.glide:glide'` glide本体
 
 - `api 'jp.wasabeef:glide-transformations'` glide自带大部分滤镜
+
+- `api 'jp.co.cyberagent.android:gpuimage'` glide自带GPU大部分滤镜
 
 - `annotationProcessor 'com.github.bumptech.glide:compiler'` glide注解框架
 
