@@ -4,6 +4,27 @@
 
 - Github: https://github.com/bumptech/glide
 
+## 框架引用方法
+
+- 在gradle中:
+
+```gradle
+    allprojects {
+        repositories {
+            mavenCentral()
+        }
+    }
+```
+
+```gradle
+    //封装的主要框架
+    implementation 'io.github.liyuhaolol:glideutils:1.2.0'
+```
+
+## 1.2.0更新
+
+- 更新IO包版本
+
 ## 1.1.9更新
 
 - 迁移到mavencentral
@@ -63,23 +84,6 @@
 ## 1.0.5更新
 
 - 兼容Android10公共目录文件加载显示
-
-## 框架引用方法
-
-- 在gradle中:
-
-```gradle
-    allprojects {
-        repositories {
-            mavenCentral()
-        }
-    }
-```
-
-```gradle
-    //封装的主要框架
-    implementation 'io.github.liyuhaolol:glideutils:1.1.9'
-```
 
 ## 引用的主要类
 
