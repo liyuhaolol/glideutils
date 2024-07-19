@@ -1,6 +1,7 @@
 package spa.lyh.cn.lib_image.app;
 
 
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -68,6 +69,7 @@ public class ImageLoadUtil {
     }
 
 
+    @SuppressLint("MissingPermission")
     public static void displayImageForNotification(Context context, RemoteViews rv, int resId,
                                                    Notification notification, int NOTIFICATION_ID, String url) {
         try{
