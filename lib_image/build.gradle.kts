@@ -8,11 +8,11 @@ plugins {
     id("net.thebugmc.gradle.sonatype-central-portal-publisher") version "1.2.3"
 }
 
-val versionName = "1.2.0"
+val versionName = "1.2.1"
 
 android {
     namespace  = "spa.lyh.cn.lib_image"
-    compileSdk = 34
+    compileSdk = 35
 
 
     defaultConfig {
@@ -39,7 +39,7 @@ dependencies {
     // Glide图形转换工具
     api("jp.wasabeef:glide-transformations:4.3.0")
     api("jp.co.cyberagent.android:gpuimage:2.1.0")
-    implementation("io.github.liyuhaolol:IO:1.1.4")
+    implementation("io.github.liyuhaolol:IO:1.1.5")
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
 }
 
