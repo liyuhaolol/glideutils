@@ -10,6 +10,8 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 
 import spa.lyh.cn.lib_image.app.ImageLoadUtil;
@@ -43,14 +45,15 @@ public class MainActivity extends PermissionActivity {
         });
         /*RequestOptions options = new RequestOptions()
                 .transform(new RoundedCorners(150));*/
-        RequestOptions options = new RequestOptions()
-                .transform(new CenterCrop(),new GrayPicTransform());
+        RequestOptions options = new RequestOptions().transform(new CenterCrop(),new GrayPicTransform());
+        //RequestOptions options = new RequestOptions().transform(new RoundedCorners(15));
 /*        String publicPath = "/sdcard/Documents/Q/5-140FGZ248-53.gif";
         String privitePath = getExternalCacheDir()+"/5-140FGZ248-53.gif";
         File file = new File(privitePath);
         if (file.exists()){
             Log.e("liyuhao","存在");
-        }*/
+        }*/https://i.pinimg.com/originals/f6/7a/53/f67a5350ca69c8d20f4ba8c9fcc6a7e3.gif
+        //ImageLoadUtil.displayImage(this,"https://samplelib.com/lib/preview/gif/sample-animated-400x300.gif",findViewById(R.id.img),options);
         ImageLoadUtil.displayImage(this,url,(ImageView) findViewById(R.id.img),options);
         /*ImageLoadUtil.getImageBitmap(this, url, new CustomTarget<Bitmap>() {
             @Override
