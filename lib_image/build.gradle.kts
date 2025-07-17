@@ -39,8 +39,8 @@ dependencies {
     // Glide图形转换工具
     api("jp.wasabeef:glide-transformations:4.3.0")
     api("jp.co.cyberagent.android:gpuimage:2.1.0")
-    implementation("io.github.liyuhaolol:IO:1.1.5")
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("io.github.liyuhaolol:IO:1.1.6")
+    implementation("com.squareup.okhttp3:okhttp:5.1.0")
 }
 
 var signingKeyId = ""//签名的密钥后8位
