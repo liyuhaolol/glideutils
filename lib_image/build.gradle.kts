@@ -8,12 +8,11 @@ plugins {
     id("net.thebugmc.gradle.sonatype-central-portal-publisher") version "1.2.3"
 }
 
-val versionName = "1.2.1"
+val versionName = "1.2.2"
 
 android {
     namespace  = "spa.lyh.cn.lib_image"
-    compileSdk = 35
-
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 21
@@ -27,8 +26,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility =  JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility =  JavaVersion.VERSION_21
     }
 
 }
@@ -38,7 +37,7 @@ dependencies {
     annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
     // Glide图形转换工具
     api("jp.wasabeef:glide-transformations:4.3.0")
-    api("jp.co.cyberagent.android:gpuimage:2.1.0")
+    //api("jp.co.cyberagent.android:gpuimage:2.1.0")
     implementation("io.github.liyuhaolol:IO:1.1.6")
     implementation("com.squareup.okhttp3:okhttp:5.1.0")
 }

@@ -18,8 +18,13 @@
 
 ```gradle
     //封装的主要框架
-    implementation 'io.github.liyuhaolol:glideutils:1.2.1'
+    implementation 'io.github.liyuhaolol:glideutils:1.2.2'
 ```
+
+## 1.2.2更新
+
+- 更新IO包版本
+- 移除`jp.co.cyberagent.android:gpuimage`因为他不支持16kb，且作者弃更
 
 ## 1.2.1更新
 
