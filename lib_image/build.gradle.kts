@@ -5,10 +5,10 @@ import net.thebugmc.gradle.sonatypepublisher.PublishingType.AUTOMATIC
 
 plugins {
     id("com.android.library")
-    id("net.thebugmc.gradle.sonatype-central-portal-publisher") version "1.2.3"
+    id("net.thebugmc.gradle.sonatype-central-portal-publisher") version "1.2.4"
 }
 
-val versionName = "1.2.2"
+val versionName = "1.2.3"
 
 android {
     namespace  = "spa.lyh.cn.lib_image"
@@ -33,8 +33,8 @@ android {
 }
 
 dependencies {
-    api("com.github.bumptech.glide:glide:4.16.0")
-    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
+    api("com.github.bumptech.glide:glide:5.0.5")
+    annotationProcessor("com.github.bumptech.glide:compiler:5.0.5")
     // Glide图形转换工具
     api("jp.wasabeef:glide-transformations:4.3.0")
     //api("jp.co.cyberagent.android:gpuimage:2.1.0")
