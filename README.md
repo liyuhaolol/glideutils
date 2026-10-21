@@ -18,8 +18,12 @@
 
 ```gradle
     //封装的主要框架
-    implementation 'io.github.liyuhaolol:glideutils:1.2.2'
+    implementation 'io.github.liyuhaolol:glideutils:1.2.4'
 ```
+
+## 1.2.4更新
+
+- 更新IO包版本
 
 ## 1.2.2更新
 

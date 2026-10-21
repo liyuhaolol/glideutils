@@ -7,9 +7,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Environment;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.RemoteViews;
 
@@ -31,9 +29,6 @@ import spa.lyh.cn.utils_io.IOUtils;
  */
 
 public class ImageLoadUtil {
-    private static String storage = "/storage";
-    private static String android = "/Android";
-
 
     public static void displayImage(Context context, Object res, ImageView target) {
         displayImage(context,res,target,"");
@@ -74,16 +69,18 @@ public class ImageLoadUtil {
                                                    Notification notification, int NOTIFICATION_ID, String url) {
         try{
             if (context != null){
-                RoundedCorners corners = new RoundedCorners(dip2px(context,5));
+                //通知可能比 Activity 活得久，必须用 ApplicationContext 发起请求
+                Context appContext = context.getApplicationContext();
+                RoundedCorners corners = new RoundedCorners(dip2px(appContext,5));
                 RequestOptions option = new RequestOptions()
                         .override(300,300)
                         .dontAnimate()
                         .transform(corners);
-                Glide.with(context)
+                Glide.with(appContext)
                         .asBitmap()
-                        .load(syncRes(context,url))
+                        .load(syncRes(appContext,url))
                         .apply(option)
-                        .into(new NotificationTarget(context, resId, rv, notification, NOTIFICATION_ID));
+                        .into(new NotificationTarget(appContext, resId, rv, notification, NOTIFICATION_ID));
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -160,18 +157,43 @@ public class ImageLoadUtil {
         return (int) (dpValue * scale);
     }
 
+    /**
+     * 把「文件系统路径字符串」解析成 Glide 可稳定加载的模型。
+     *
+     * <p>只处理绝对路径（含 {@code /sdcard} 等别名）和 {@code file://}；
+     * http(s)、content、android.resource、资源 id、Uri、File 等原样返回。
+     * 私有目录 / 共享存储 / 分区存储的判断统一交给 {@link IOUtils#getFileUri}，
+     * 避免在这里用字符串前缀猜路径。
+     */
     private static Object syncRes(Context context,Object res){
-        if (res instanceof String){
-            String path = (String) res;
-            String storagePath = Environment.getExternalStorageDirectory().getPath();
-            if (path.startsWith(storage)){
-                //为存储路径图片
-                if (!path.startsWith(storagePath + android)){
-                    //不是私有路径
-                    res = IOUtils.getFileUri(context,path);
-                }
-            }
+        if (context == null || !(res instanceof String path)){
+            return res;
         }
-        return res;
+        String fsPath = toFilesystemPath(path);
+        if (fsPath == null){
+            return res;
+        }
+        Uri uri = IOUtils.getFileUri(context, fsPath);
+        //getFileUri 失败时保留原路径，交给 Glide 走 StringLoader 兜底
+        return uri != null ? uri : res;
+    }
+
+    /**
+     * 仅当入参是本地文件系统路径时返回规范路径，否则返回 null。
+     */
+    private static String toFilesystemPath(String path){
+        if (TextUtils.isEmpty(path)){
+            return null;
+        }
+        //普通绝对路径：/storage/...、/sdcard/...、/data/...
+        if (path.startsWith("/")){
+            return path;
+        }
+        //file:// URI，取出 path 后同样走 getFileUri 解析
+        if (path.startsWith("file:/")){
+            String fsPath = Uri.parse(path).getPath();
+            return TextUtils.isEmpty(fsPath) ? null : fsPath;
+        }
+        return null;
     }
 }
